@@ -11,6 +11,6 @@ public class CutoutMove : MonoBehaviour
     void Update()
     {
         z = z - (speed/100f);
-        transform.position = new Vector3(0f, 1.5f, z);
+        transform.position = new Vector3(0f, 0f, z);
     }
 }
