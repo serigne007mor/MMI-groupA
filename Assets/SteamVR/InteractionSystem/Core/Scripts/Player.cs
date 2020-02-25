@@ -412,5 +412,16 @@ namespace Valve.VR.InteractionSystem
 		{
 			//Do something appropriate here
 		}
-	}
+
+        public int hitboxes = 0;
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Hands"))
+            {
+                hitboxes++;
+                Debug.Log("Number of boxes hit: " + hitboxes);
+            }
+        }
+    }
 }

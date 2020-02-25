@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - leftCube
   - rightCube
+  - Hands
   layers:
   - Default
   - TransparentFX
