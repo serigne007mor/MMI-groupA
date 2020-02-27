@@ -201,21 +201,7 @@ namespace Valve.VR.InteractionSystem
         //-------------------------------------------------
         // SERIGNE START
         //-------------------------------------------------
-        void OnTriggerEnter(Collider other)
-        {
-            if(handType == SteamVR_Input_Sources.RightHand && other.gameObject.CompareTag("rightCube"))
-            {
-                other.gameObject.SetActive(false);
-                
-            }
-
-            if (handType == SteamVR_Input_Sources.LeftHand && other.gameObject.CompareTag("leftCube"))
-            {
-                other.gameObject.SetActive(false);
-
-            }
-
-        }
+        
 
         //-------------------------------------------------
         // SERIGNE END

@@ -10,6 +10,8 @@ TagManager:
   - leftCube
   - rightCube
   - Hands
+  - leftHand
+  - rightHand
   layers:
   - Default
   - TransparentFX
