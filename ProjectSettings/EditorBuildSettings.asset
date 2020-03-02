@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/punching.unity
+    path: Assets/Scenes/Punching.unity
     guid: f0df1f323f96a4a51b42f3fb14207fc5
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Hub.unity
+    guid: b1abdd7ea81da4791abb12a6a1bc0c52
   m_configObjects: {}
