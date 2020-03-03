@@ -803,7 +803,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.025441969
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7989172610708386034, guid: c12d114bf5bef4732b8f79d8caf4f3ff,
+        type: 3}
+      propertyPath: destroyer
+      value: leftHand
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: c12d114bf5bef4732b8f79d8caf4f3ff, type: 3}
 --- !u!4 &624918460 stripped
 Transform:
@@ -1627,6 +1634,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.02544197
       objectReference: {fileID: 0}
+    - target: {fileID: 3732053424634226663, guid: 7d1bea7c284084c3284d51a7c315d785,
+        type: 3}
+      propertyPath: destroyer
+      value: rightHand
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d1bea7c284084c3284d51a7c315d785, type: 3}
 --- !u!4 &1129293791 stripped
@@ -1812,6 +1824,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.02544197
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732053424634226663, guid: 7d1bea7c284084c3284d51a7c315d785,
+        type: 3}
+      propertyPath: destroyer
+      value: rightHand
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d1bea7c284084c3284d51a7c315d785, type: 3}
