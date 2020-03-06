@@ -8,6 +8,8 @@ public class LeftTest : MonoBehaviour
 {
     public int lefthitboxes = 0;
     public Text leftcountText;
+    public Progress progress;
+    private string identifier = "left";
 
     public void OnTriggerEnter(Collider other)
     {
@@ -16,6 +18,7 @@ public class LeftTest : MonoBehaviour
             lefthitboxes++;
             Debug.Log("Number of boxes hit: " + lefthitboxes);
             leftcountText.text = ("Left Count:" + lefthitboxes.ToString());
+            progress.increment(lefthitboxes, identifier);
         }
     }
 }
