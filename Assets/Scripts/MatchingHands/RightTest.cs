@@ -8,6 +8,7 @@ public class RightTest : MonoBehaviour
 {
     public int righthitboxes = 0;
     public Text rightcountText;
+    public Text rightpasstext;
     public Progress progress;
     private string identifier = "right";
 
@@ -16,6 +17,8 @@ public class RightTest : MonoBehaviour
     {
         if (other.gameObject.CompareTag("rightHand"))
         {
+            Debug.Log("Hit: " + other.name);
+            Destroy(other.gameObject);
             righthitboxes++;
             Debug.Log("Number of boxes hit: " + righthitboxes);
             rightcountText.text = ("Right Count:" + righthitboxes.ToString());
@@ -27,5 +30,6 @@ public class RightTest : MonoBehaviour
     {
         righthitboxes = 0;
         rightcountText.text = ("Right Count:" + righthitboxes.ToString());
+        rightpasstext.text = ("Right pass:");
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Progress : MonoBehaviour
 {
-    bool firstleft, firstright, secondleft, secondright, thirdleft, thirdright;
+    bool firstleft, firstright, secondleft, secondright, thirdleft, thirdright, firstpass, secondpass, thirdpass;
     private int i;
     public GameObject first_cutout;
     public GameObject second_cutout;
@@ -16,6 +17,9 @@ public class Progress : MonoBehaviour
     public LeftTest lefttest;
     public RightTest righttest;
     public CutoutMove cutoutmove;
+    public Text leftpasstext;
+    public Text rightpasstext;
+
 
     void Start()
     {
@@ -25,43 +29,54 @@ public class Progress : MonoBehaviour
         secondright = false;
         thirdleft = false;
         thirdright = false;
+        firstpass = false;
+        secondpass = false;
+        thirdpass = false;
         i = 1;
+        leftpasstext.text = ("Left pass: ");
+        rightpasstext.text = ("Right pass: ");
 
         firstcutout = (GameObject)Instantiate(first_cutout); 
     }
 
     public void increment(int number, string id)
     {
-        if (firstleft == false && number > 5 && id == "left")
+        if (i == 1 && number > 5 && id == "left")
         {
             Debug.Log("first left pass");
+            leftpasstext.text = ("Left pass: True");
             firstleft = true;
         }
-        else if (firstright == false && number > 5 && id == "right")
+        else if (i == 1 && number > 5 && id == "right")
         {
             Debug.Log("first right pass");
+            rightpasstext.text = ("Right pass: True");
             firstright = true;
 
         }
-        else if (secondleft == false && number > 5 && id == "left")
+        else if (i == 2 && number > 5 && id == "left")
         {
             Debug.Log("second left pass");
+            leftpasstext.text = ("Left pass: True");
             secondleft = true;
         }
-        else if (secondright == false && number > 5 && id == "right")
+        else if (i == 2 && number > 5 && id == "right")
         {
             Debug.Log("second right pass");
+            rightpasstext.text = ("Right pass: True");
             secondright = true;
 
         }
-        else if (thirdleft == false && number > 5 && id == "left")
+        else if (i == 3 && number > 5 && id == "left")
         {
             Debug.Log("third left pass");
+            leftpasstext.text = ("Left pass: True");
             thirdleft = true;
         }
-        else if (thirdright == false && number > 5 && id == "right")
+        else if (i == 3 && number > 5 && id == "right")
         {
             Debug.Log("third right pass");
+            rightpasstext.text = ("Right pass: True");
             thirdright = true;
 
         }
@@ -70,9 +85,10 @@ public class Progress : MonoBehaviour
     public void pass()
     {
         Debug.Log("Got into Pass");
-        if (firstleft == true && firstright == true) //if both hands have hit all the hitboxes for the firstcutout, destroy that ish
+        if (firstleft == true && firstright == true && firstpass == false) //if both hands have hit all the hitboxes for the firstcutout, destroy that ish
         {
             Destroy(firstcutout.gameObject);
+            firstpass = true;
             lefttest.reset();
             righttest.reset();
             secondcutout = (GameObject)Instantiate(second_cutout);
@@ -81,20 +97,22 @@ public class Progress : MonoBehaviour
             cutoutmove.Stop();
             i = 2;
         }
-        else if (secondleft == true && secondright == true) //if both hands have hit all the hitboxes for the thirdcutout, destroy that ish
+        else if (secondleft == true && secondright == true && secondpass == false) //if both hands have hit all the hitboxes for the thirdcutout, destroy that ish
         {
             Destroy(secondcutout.gameObject);
+            secondpass = true;
             lefttest.reset();
             righttest.reset();
             thirdcutout = (GameObject)Instantiate(third_cutout);
-            firstleft = false;
-            firstright = false;
+            secondleft = false;
+            secondright = false;
             cutoutmove.Stop();
             i = 3;
         }
-        else if (thirdleft == true && thirdright == true) //if both hands have hit all the hitboxes for the thirdcutout, destroy that ish
+        else if (thirdleft == true && thirdright == true && thirdpass == false) //if both hands have hit all the hitboxes for the thirdcutout, destroy that ish
         {
             Destroy(thirdcutout.gameObject);
+            thirdpass = true;
             lefttest.reset();
             righttest.reset();
             cutoutmove.Stop();

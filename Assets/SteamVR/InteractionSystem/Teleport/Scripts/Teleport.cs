@@ -985,27 +985,27 @@ namespace Valve.VR.InteractionSystem
 				{
 					bool showHint = IsEligibleForTeleport( hand );
 					bool isShowingHint = !string.IsNullOrEmpty( ControllerButtonHints.GetActiveHintText( hand, teleportAction) );
-					if ( showHint )
-					{
-						if ( !isShowingHint )
-						{
-							ControllerButtonHints.ShowTextHint( hand, teleportAction, "Teleport" );
-							prevBreakTime = Time.time;
-							prevHapticPulseTime = Time.time;
-						}
+					//if ( showHint )
+					//{
+					//	if ( !isShowingHint )
+					//	{
+					//		ControllerButtonHints.ShowTextHint( hand, teleportAction, "Teleport" );
+					//		prevBreakTime = Time.time;
+					//		prevHapticPulseTime = Time.time;
+					//	}
 
-						if ( Time.time > prevHapticPulseTime + 0.05f )
-						{
-							//Haptic pulse for a few seconds
-							pulsed = true;
+					//	if ( Time.time > prevHapticPulseTime + 0.05f )
+					//	{
+					//		//Haptic pulse for a few seconds
+					//		pulsed = true;
 
-							hand.TriggerHapticPulse( 500 );
-						}
-					}
-					else if ( !showHint && isShowingHint )
-					{
-						ControllerButtonHints.HideTextHint( hand, teleportAction);
-					}
+					//		hand.TriggerHapticPulse( 500 );
+					//	}
+					//}
+					//else if ( !showHint && isShowingHint )
+					//{
+					//	ControllerButtonHints.HideTextHint( hand, teleportAction);
+					//}
 				}
 
 				if ( Time.time > prevBreakTime + 3.0f )
