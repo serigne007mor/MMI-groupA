@@ -21,4 +21,10 @@ public class LeftTest : MonoBehaviour
             progress.increment(lefthitboxes, identifier);
         }
     }
+
+    public void reset()
+    {
+        lefthitboxes = 0;
+        leftcountText.text = ("Left Count:" + lefthitboxes.ToString());
+    }
 }
