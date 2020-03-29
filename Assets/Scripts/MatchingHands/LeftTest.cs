@@ -8,6 +8,7 @@ public class LeftTest : MonoBehaviour
 {
     public int lefthitboxes = 0;
     public Text leftcountText;
+    public Text leftpasstext;
     public Progress progress;
     private string identifier = "left";
 
@@ -15,10 +16,18 @@ public class LeftTest : MonoBehaviour
     {
         if (other.gameObject.CompareTag("leftHand"))
         {
+            Destroy(other.gameObject);
             lefthitboxes++;
             Debug.Log("Number of boxes hit: " + lefthitboxes);
             leftcountText.text = ("Left Count:" + lefthitboxes.ToString());
             progress.increment(lefthitboxes, identifier);
         }
+    }
+
+    public void reset()
+    {
+        lefthitboxes = 0;
+        leftcountText.text = ("Left Count:" + lefthitboxes.ToString());
+        leftpasstext.text = ("Left pass:");
     }
 }
