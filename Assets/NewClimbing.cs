@@ -8,27 +8,38 @@ public class NewClimbing : MonoBehaviour
     public GameObject leftHand;
     public GameObject rightHand;
 
-    private Vector3 lastRightPosition = new Vector3(0, 0, 0);
-    private Vector3 lastLeftPosition = new Vector3(0, 0, 0);
-    private bool climbing = false;
+    public GameObject player;
+
+    private Vector3 lastRightPosition;
+    private Vector3 lastLeftPosition;
+    private bool climbing;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        lastRightPosition = new Vector3(0, 0, 0);
+        lastLeftPosition = new Vector3(0, 0, 0);
+        climbing = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (SteamVR_Actions._default.GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand)) {
-
+        // Debug.Log(lastRightPosition);
+        if (SteamVR_Actions._default.GrabPinch.GetStateDown(SteamVR_Input_Sources.RightHand))
+        {
+            Debug.Log("pressing right down and climbing: " + climbing);
             if (climbing)
             {
+                Debug.Log("climbing");
+                Debug.Log(rightHand.transform.position);
+                Debug.Log(lastRightPosition);
                 Vector3 movement = rightHand.transform.position - lastRightPosition;
-                transform.position -= movement;
+                Debug.Log(movement);
+                player.transform.position -= movement;
             } else
             {
+                Debug.Log("setting climbing to true");
                 climbing = true;
             }
             
@@ -36,8 +47,9 @@ public class NewClimbing : MonoBehaviour
 
             if (climbing)
             {
+                Debug.Log("moving left hand");
                 Vector3 movement = leftHand.transform.position - lastLeftPosition;
-                transform.position -= movement;
+                player.transform.position -= movement;
             }
             else
             {
