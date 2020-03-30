@@ -39,6 +39,8 @@ public class Climber : MonoBehaviour
         {
             if (ToggleGripButton.GetStateDown(Hand.Hand) || Hand.grabbing)
             {
+                Debug.Log("attached");
+
                 Hand.grabbing = true;
                 if (Hand.TouchedCount > 0)
                 {
