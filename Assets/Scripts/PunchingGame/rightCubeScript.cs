@@ -4,25 +4,16 @@ using UnityEngine;
 
 public class rightCubeScript : MonoBehaviour
 {
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-        
-    // }
-
-    // // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
-
+    public string destroyer;
+    public TextMesh score;
     void OnTriggerEnter(Collider other)
         {
-            if(other.gameObject.CompareTag("rightHand"))
+            if(other.gameObject.CompareTag(destroyer))
             {
                 gameObject.SetActive(false);
-                
-            }
+                score.text = (int.Parse(score.text) + 1).ToString();
+
+        }
 
 
         }
