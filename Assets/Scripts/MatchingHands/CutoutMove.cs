@@ -19,7 +19,7 @@ public class CutoutMove : MonoBehaviour
     void Update()
     {
         z = z - (speed/100f);
-        transform.position = new Vector3(0f, 1.5f, z);
+        transform.position = new Vector3(0f, 1.0f, z);
 
         if ((z < -4) && (stopcalling = true))
         {
