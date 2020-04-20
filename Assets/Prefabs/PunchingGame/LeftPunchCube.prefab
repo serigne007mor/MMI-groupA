@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 3598536458283509612}
   - component: {fileID: 900691285415287210}
   - component: {fileID: 7989172610708386034}
+  - component: {fileID: 6917198632795078267}
+  - component: {fileID: 2894140101826822202}
   m_Layer: 0
   m_Name: LeftPunchCube
   m_TagString: leftCube
@@ -107,7 +109,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46d8eb214cad144e0b5ba37c64f0cc04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score: {fileID: 0}
   destroyer: leftHand
+--- !u!114 &6917198632795078267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943764243257006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5445cb35414044ad890eaea39a88e7f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2894140101826822202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7943764243257006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732e2a5af960d4237b35d448588441d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7566075077433840604
 PrefabInstance:
   m_ObjectHideFlags: 0
