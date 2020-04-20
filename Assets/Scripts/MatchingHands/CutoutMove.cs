@@ -14,12 +14,13 @@ public class CutoutMove : MonoBehaviour
     void Start()
     {
         progress = GameObject.FindObjectOfType<Progress>();
+        stopcalling = true;
     }
     // Update is called once per frame
     void Update()
     {
         z = z - (speed/100f);
-        transform.position = new Vector3(0f, 1.0f, z);
+        transform.position = new Vector3(0f, 0f, z);
 
         if ((z < -4) && (stopcalling = true))
         {
@@ -32,7 +33,8 @@ public class CutoutMove : MonoBehaviour
     {
         if (stop == false)
         {
-            progress.pass(); 
+            progress.pass();
+            stop = true;
         }
     }
     public void Stop()
