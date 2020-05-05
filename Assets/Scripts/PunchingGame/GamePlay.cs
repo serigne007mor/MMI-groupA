@@ -51,10 +51,10 @@ public class GamePlay : MonoBehaviour
         scoreText.gameObject.SetActive(false);
         if (seconds != endTime.ToString())
         {
-            timerText.text = "Congrats, You Finished in: " + currentTime + " teleporte here to Try again? \n or look behing you and go back to the hub";
+            timerText.text = "Congrats, You Finished in: " + currentTime + " teleport here to Try again \n  Look behing you to go back to the hub";
         }
         else
-            timerText.text = "You took way too long! teleporte here Try again? \n or look behing you and go back to the hub";
+            timerText.text = "You took way too long! teleport here Try again \n  Look behing you and go back to the hub";
 
 
 
