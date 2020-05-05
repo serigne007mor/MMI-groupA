@@ -15,65 +15,92 @@ public class GamePlay : MonoBehaviour
     public TextMesh timerText;
     private float startTime;
     public int endTime = 10;
+    int currentTime;
     float finalTime;
+    public int countdownTime;
+    public TextMesh countdownDisplay;
 
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
+        StartCoroutine(CountdownToStart());
+        currentTime = 0;
+        scoreText.gameObject.SetActive(false);
+        timerText.gameObject.SetActive(false);
+    }
+
+    IEnumerator timeMe()
+    {
+        scoreText.gameObject.SetActive(true);
+        timerText.gameObject.SetActive(true);
         scoreText.text = "0";
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (gamePlay == 0)
-            quick();
-        else
-            timeMe();
-    }
-
-    void timeMe()
-    {
         restartPoint.SetActive(false);
-        float t = Time.time - startTime;
-        //string minutes = ((int)t / 60).ToString();
-        string seconds = ((t % 60)).ToString("f0");
-        if (scoreText.text == "16")
+        string seconds = "";
+        while (scoreText.text != "16" && seconds != endTime.ToString())
         {
-            finalTime = Time.time - startTime;
-            wall.SetActive(false);
-            restartPoint.SetActive(true);
-            Hub.SetActive(true);
-            scoreText.gameObject.SetActive(false);
-            timerText.text = "Your final score is: " + scoreText.text + "/16";
-            timerText.text = "It took you " + finalTime + " to finish";
+            seconds = (currentTime++).ToString();
+            timerText.text = seconds.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+
+
+        finalTime = Time.time - startTime;
+        wall.SetActive(false);
+        restartPoint.SetActive(true);
+        Hub.SetActive(true);
+        scoreText.gameObject.SetActive(false);
+        if (seconds != endTime.ToString())
+        {
+            timerText.text = "Congrats, You Finished in: " + currentTime + " teleporte here to Try again? \n or look behing you and go back to the hub";
         }
         else
-            timerText.text = seconds;
+            timerText.text = "You took way too long! teleporte here Try again? \n or look behing you and go back to the hub";
+
+
+
+        yield return new WaitForSeconds(1f);
     }
 
-    void quick()
+    IEnumerator CountdownToStart()
     {
-        restartPoint.SetActive(false);
-        float t = Time.time - startTime;
-        //string minutes = ((int)t / 60).ToString();
-        string seconds = (endTime - (t % 60)).ToString("f0");
-        if (endTime - (t % 60) < 0)
+        while (countdownTime > 0)
         {
-            timerText.text = "yepp";
-            //leftBabies.SetActive(false);
-            //rightBabies.SetActive(false);
-            wall.SetActive(false);
-            restartPoint.SetActive(true);
-            Hub.SetActive(true);
-            scoreText.gameObject.SetActive(false);
-            timerText.text = "Your final score is: " + scoreText.text + "/16";
+            if (countdownTime == 3)
+            {
+                countdownDisplay.text = "Hello!";
+                yield return new WaitForSeconds(1f);
+
+                countdownDisplay.text = "Welcome to the punching game";
+                yield return new WaitForSeconds(2f);
+
+                countdownDisplay.text = "In this game your goal is to destroy all the babies ASAP";
+                yield return new WaitForSeconds(3f);
+
+                countdownDisplay.text = "But you can only destroy the red babies with your left hand";
+                yield return new WaitForSeconds(3f);
+
+                countdownDisplay.text = "And the blue babies with your right hand";
+                yield return new WaitForSeconds(2f);
+
+                countdownDisplay.text = "try to complete it in:" + endTime + " seconds";
+                yield return new WaitForSeconds(2f);
+
+                countdownDisplay.text = "The game will start in";
+                yield return new WaitForSeconds(2f);
+            }
+            countdownDisplay.text = countdownTime.ToString();
+
+            yield return new WaitForSeconds(1f);
+
+            countdownTime--;
         }
 
-        else
-        {
-            timerText.text = seconds;
-        }
+        countdownDisplay.text = "GO!";
+        
+
+        yield return new WaitForSeconds(1f);
+        countdownDisplay.gameObject.SetActive(false);
+        StartCoroutine(timeMe());
     }
+
 }
